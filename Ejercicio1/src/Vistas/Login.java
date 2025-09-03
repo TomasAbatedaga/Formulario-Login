@@ -4,6 +4,8 @@
  */
 package Vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author abate
@@ -33,8 +35,8 @@ public class Login extends javax.swing.JFrame {
         jLUsuario = new javax.swing.JLabel();
         jLContrasenia = new javax.swing.JLabel();
         jTfUsuario = new javax.swing.JTextField();
-        jTfContrasenia = new javax.swing.JTextField();
         jBVerificar = new javax.swing.JButton();
+        jPcontrasenia = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jBOcultar = new javax.swing.JButton();
         jBVer = new javax.swing.JButton();
@@ -67,14 +69,29 @@ public class Login extends javax.swing.JFrame {
 
         jLContrasenia.setText("Contrasenia:");
 
-        jTfContrasenia.addActionListener(new java.awt.event.ActionListener() {
+        jTfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTfContraseniaActionPerformed(evt);
+                jTfUsuarioActionPerformed(evt);
+            }
+        });
+        jTfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTfUsuarioKeyReleased(evt);
             }
         });
 
         jBVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-cliente-windows-48.png"))); // NOI18N
         jBVerificar.setText("Verificar");
+        jBVerificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBVerificarMouseClicked(evt);
+            }
+        });
+        jBVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVerificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -89,8 +106,8 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLUsuario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTfUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                            .addComponent(jTfContrasenia)))
+                            .addComponent(jTfUsuario)
+                            .addComponent(jPcontrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jBVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -106,7 +123,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLContrasenia)
-                    .addComponent(jTfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jBVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -114,6 +131,11 @@ public class Login extends javax.swing.JFrame {
 
         jBOcultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons7-ocultar-contraseña-50.png"))); // NOI18N
         jBOcultar.setText("Ocultar");
+        jBOcultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOcultarActionPerformed(evt);
+            }
+        });
 
         jBVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons7-mostrar-contraseña-50.png"))); // NOI18N
         jBVer.setText("Ver");
@@ -186,15 +208,45 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTfContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfContraseniaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTfContraseniaActionPerformed
 
     private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
         // TODO add your handling code here:
+        String pass = jPcontrasenia.getText();
+        jPcontrasenia.setEchoChar((char)0);
     }//GEN-LAST:event_jBVerActionPerformed
+
+    private void jTfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfUsuarioActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTfUsuarioActionPerformed
+
+    private void jBVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerificarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jBVerificarActionPerformed
+
+    private void jTfUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTfUsuarioKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTfUsuarioKeyReleased
+
+    private void jBVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBVerificarMouseClicked
+        // TODO add your handling code here:
+        String usuario = jTfUsuario.getText();
+        String pass = jPcontrasenia.getText();
+        if (usuario.equals("alumno@ulp.edu.ar")&& pass.equals("12345678")) {
+            JOptionPane.showMessageDialog(null,"Bienvenido");
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario/Contrasenia incorrecta");
+        }
+    }//GEN-LAST:event_jBVerificarMouseClicked
+
+    private void jBOcultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOcultarActionPerformed
+        // TODO add your handling code here:
+        String pass = jPcontrasenia.getText();
+        jPcontrasenia.setEchoChar('*');
+    }//GEN-LAST:event_jBOcultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +279,7 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+                
             }
         });
     }
@@ -242,7 +295,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTfContrasenia;
+    private javax.swing.JPasswordField jPcontrasenia;
     private javax.swing.JTextField jTfUsuario;
     // End of variables declaration//GEN-END:variables
 }
